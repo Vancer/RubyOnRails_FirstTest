@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
+
+  #Descending order of posts reffering to time.
   def index
     @posts = Post.all.order("created_at DESC")
   end
@@ -44,6 +46,11 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to root_path
   end
+
+  def donew
+    @post.update(post params)
+  end
+  
 
   private
 
